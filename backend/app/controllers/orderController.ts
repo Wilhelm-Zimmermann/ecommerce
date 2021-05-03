@@ -1,0 +1,50 @@
+import { Request, Response } from 'express'
+import { db } from '../database/mongo'
+import jsonwebtoken from 'jsonwebtoken'
+import secret from '../../secret/hash.json'
+import { ObjectID } from 'mongodb'
+
+class OrderController{
+    async getAllOrders(req: Request, res: Response){
+        await db.collection("orders").find().toArray((err,result) => {
+            if(err) return res.status(500).json({ err : "Error on Orders" })
+
+            res.status(200).json({ result })
+        })
+    }
+
+    async newOrder(req: Request, res: Response){
+        const { product_id } = req.body
+
+        const token = req.headers.authorization.split(' ')[1]
+        const decode = await jsonwebtoken.verify(token,secret.secret)
+
+        const product = await db.collection("products").findOne({
+            _id : new ObjectID(product_id),
+        })
+
+        await db.collection("orders").insertOne({
+            product,
+            user:decode
+        },(err,result) => {
+            if(err) return res.status(500).json({ err : "Cannot make a new order"})
+
+            res.status(201).json({ msg : "Ok"})
+        })
+    }
+
+    async deleteOrder(req: Request, res: Response){
+        const { id } = req.params
+
+        await db.collection("orders").deleteOne({
+            _id : new ObjectID(id)
+        },(err,result) => {
+            if(err) return res.status(500).json({ err : "Error on delete order"})
+
+            return res.status(200).json({ msg : "Deleted Sucessfull"})
+        })
+    }
+
+}
+
+export { OrderController }
