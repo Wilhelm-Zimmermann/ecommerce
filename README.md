@@ -1,6 +1,14 @@
-# Eommerce
-This is will be an ecommerce which you can add and buy products,this project is not complete.Now only have the backend
-I'm working on the front end
+# Ecommerce
+## Update 5/15/2020
+* Front End added
+* You can add and see Products
+
+## Things TO-DO
+* Can change image,product name and price
+* Add more images for product
+* Product Description
+* Add user and login
+* Money to user,to buy products
 
 ## Technologies
 * Node JS
