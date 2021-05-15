@@ -18,6 +18,7 @@
 * Type Script
 * Connect Multiparty
 * Multer
+* React JS
 
 # What you need
 * Install [Mongo DB](http://mongodb.com)
