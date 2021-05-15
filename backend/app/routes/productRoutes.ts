@@ -39,12 +39,16 @@ const productController = new ProductController()
 // Get all products
 productRoutes.get('/products',productController.findAllProducts)
 
-// Inset a product
+// Insert a product
 productRoutes.post('/products',
     upload.single("img_product"),
     auth.private,
     productController.addProduct
 )
+
+// Get one product
+
+productRoutes.get('/products/:id',productController.getOneProduct)
 
 // Delete product based on id
 productRoutes.delete('/products/:id/delete',auth.private,productController.deleteProduct)
