@@ -1,10 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobaStyle = createGlobalStyle`
-    body{
+const GlobalStyle = createGlobalStyle`
+    *{
         margin:0;
         padding:0;
-        background:#eee;
         box-sizing:border-box;
         font-family: Arial;
     }
@@ -13,4 +12,4 @@ const GlobaStyle = createGlobalStyle`
     }
 `
 
-export default GlobaStyle
+export default GlobalStyle

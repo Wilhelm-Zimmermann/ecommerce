@@ -1,11 +1,22 @@
 import styled from 'styled-components'
 
+export const Searched = styled.div` 
+    h1{
+        margin:20px 0;
+        text-align:center;
+        font-weight:lighter;
+        color:#aaa;
+    }
+
+`
+
 export const Center = styled.div`
     max-width:1100px;
     min-height:100px;
     margin:0 auto;
     display:flex;
     flex-wrap:wrap;
+    justify-content: space-around;
 `
 
 export const ProductSingle = styled.div`
@@ -47,5 +58,8 @@ export const ProductInfo = styled.div`
 `
 
 export const NotFound = styled.div`
-    margin:10px auto;
+    text-align:center;
+    margin-top:50px;
+    font-size:30px;
+    font-weight:lighter;
 `

@@ -22,8 +22,6 @@ class ProductController{
 
     async addProduct(req: Request, res: Response){
         const { name,price }:IProduct = req.body 
-        console.log(req.file)
-        console.log(req.body)
         const img = req.file.filename
 
         await db.collection("products").insertOne({
@@ -90,6 +88,25 @@ class ProductController{
 
             res.json(result)
         })
+    }
+    
+    async searchProduct(req: Request, res: Response){
+        const product_name = req.params.name        
+
+        db.collection('products').createIndex({ name : 'text'})
+        
+        db.collection('products').find(
+            {$text : {$search : product_name}},
+            
+        ).toArray((err,result) => {
+            if(err) return res.status(500).json({ error : 'Error on search product'})
+
+            res.status(200).json({
+                amount : result.length,
+                result : result
+            })
+        })
+        
     }
 }
 

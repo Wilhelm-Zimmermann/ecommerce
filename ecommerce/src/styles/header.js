@@ -6,7 +6,7 @@ export const Head = styled.div`
     justify-content:space-between;
     border-bottom: 1px solid #ccc;
     align-items : center;
-    padding: 0 2%;
+    padding: 17px 2%;
     @media screen and (max-width:608px){
         flex-direction:column;
     }

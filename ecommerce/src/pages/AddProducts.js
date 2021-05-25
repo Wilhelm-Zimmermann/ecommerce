@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Form } from '../styles/addProduct'
 import api from '../services/api'
+import Header from '../components/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileImage } from '@fortawesome/free-solid-svg-icons'
 
@@ -41,12 +42,15 @@ const AddProducts = () => {
     // Prevent form default to functions work correctly
     // Try to remove to see what happens
     return(
+        <>
+        <Header/>
         <Form onSubmit={(e) => e.preventDefault()}>
             <h1>Sell Your product Here!!</h1>
             <input type='text' className='w50' name='name' onChange={e => setProductInfo({...productInfo,name : e.target.value})} placeholder='Name'/>
             <input type='number' className='w50' name='price' onChange={e => setProductInfo({...productInfo,price : e.target.value})} placeholder='Price'/>
             <label for='img'>
                 <FontAwesomeIcon icon={faFileImage} size='2x'/>
+                Choose a file
                 <input type='file' id='img' onChange={e => setProductInfo({...productInfo,image : e.target.files[0]})} name='file'/>
             </label>
             {/* <textarea onChange={e => setProductInfo({...productInfo,description: e.target.value})}></textarea> */}
@@ -55,6 +59,7 @@ const AddProducts = () => {
                 <button id='btn_save' onClick={() => saveProduct()}>Add Product</button>
             </div>
         </Form>
+        </>
     )
 }
 

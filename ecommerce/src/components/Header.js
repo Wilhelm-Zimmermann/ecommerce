@@ -1,9 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Head, Search } from '../styles/header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import api from '../services/api'
 
 const Header = () => {
+    // products/:name/name
+    const [search, setSearch] = useState('')
+
+
+    const findByName = async () => {
+        setSearch(search.replace(' ','%20'))
+        await api.get('/products/'+search+'/name')
+        window.location.href = '/products/'+search+'/name'
+    }
     return (
         <Head>
             <div className="logo">
@@ -11,8 +21,8 @@ const Header = () => {
                 <span style={{fontSize: "19px",color:"#055C9D"}}> shop</span>
             </div>
             <Search>
-                <input type="text"/>
-                <button><FontAwesomeIcon icon={faSearch}/></button>
+                <input type="text" onChange={(e) => setSearch(e.target.value)}/>
+                <button onClick={() => findByName()}><FontAwesomeIcon icon={faSearch}/></button>
             </Search>
         </Head>
     )

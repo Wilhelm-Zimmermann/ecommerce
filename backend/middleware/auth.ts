@@ -9,7 +9,7 @@ class Auth{
             const decode = jsonwebtoken.verify(token,secret.secret)
             next()
         }catch(err){
-            next()
+            res.status(401).json({ error : 'Invalid Token'})
         }
     }
 }

@@ -56,4 +56,7 @@ productRoutes.delete('/products/:id/delete',auth.private,productController.delet
 // Update product based on id
 productRoutes.put('/products/:id/update',auth.private,productController.updateProduct)
 
+// Search engine
+productRoutes.get('/products/:name/name',productController.searchProduct)
+
 export { productRoutes }

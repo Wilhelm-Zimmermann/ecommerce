@@ -18,6 +18,22 @@ class UserController{
         const { username, email, password }: IUser = req.body
         const hash = await bcrypt.hash(password,10)
 
+        const hasUser = await db.collection("users").findOne({
+            username : username
+        })
+        
+        const hasEmail = await db.collection("users").findOne({
+            email : email
+        })
+
+        if(hasEmail){
+            return res.status(401).json({ error : 'This email is already in use'})
+        }
+
+        if(hasUser){
+            return res.status(401).json({ error : 'This user already exists'})
+        }
+
         await db.collection("users").insertOne({
             username,
             email,
@@ -35,7 +51,6 @@ class UserController{
 
     async login(req:Request, res:Response){
         const { email, password } : IUser = req.body
-
         const user = await db.collection("users").findOne({
             email
         })
@@ -60,7 +75,7 @@ class UserController{
                     expiresIn : '1d'
                 })
                 return res.status(200).json({
-                    token,
+                    token: token,
                     user_id : user._id
                 })
             })

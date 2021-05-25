@@ -1,18 +1,25 @@
 import styled from 'styled-components'
 
 export const SingleProductContainer = styled.div`
-    width:1100px;
+    max-width:1100px;
     padding:0 2%;
     margin: 15px auto;
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;
     align-items: center;
+    @media screen and (max-width:768px){
+        flex-direction:column;
+    }
+
 `
 
 export const ImgProductContainer = styled.div`
     width:40%;
     text-align:center;
+    @media screen and (max-width:670px){
+        width:100%;
+    }
     img{
         width:300px;
         height:300px;
@@ -22,6 +29,9 @@ export const ImgProductContainer = styled.div`
 export const ProductInfoContainer = styled.div`
     width:58%;
     margin-left:2%;
+    @media screen and (max-width:670px){
+        width:100%;
+    }
     button{
         border:0;
         margin:7px 3px;
@@ -45,5 +55,6 @@ export const ProductInfoContainer = styled.div`
     }
     h1{
         font-weight:lighter;
+        margin:10px 0;
     }
 `

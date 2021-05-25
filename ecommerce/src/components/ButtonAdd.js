@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 const ButtonAdd = () => {
     return(
         <>
-        <Link to='add_products'>
+        <Link to='/new_product'>
             <Button>
                 +
             </Button>

@@ -32,7 +32,6 @@ const Products = (props) => {
                         </ProductSingle>
                         )
                     })}
-                
             </Center>
         </main>
     )

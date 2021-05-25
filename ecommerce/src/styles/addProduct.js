@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-    width:1100px;
-    margin:0 auto;
+    max-width:700px;
+    margin:40px auto;
     padding:0 2%;
     display:flex;
     flex-wrap:wrap;
@@ -10,6 +10,7 @@ export const Form = styled.form`
     justify-content:space-between;
     h1{
         width:100%;
+        margin:10px 0;
         text-align:center;
         font-weight:lighter;
     }
@@ -45,6 +46,7 @@ export const Form = styled.form`
         margin:5px 2px;
         cursor:pointer;
         border:0;
+        padding:5px;
     }
     #btn_cancel{
         color:white;
@@ -53,5 +55,12 @@ export const Form = styled.form`
     #btn_save{
         background-color:#18A558;
         color:white;
+    }
+    @media screen and (max-width: 780px){
+        flex-direction:column;
+        input{
+            width:100%;
+            margin-top:5px;
+        }
     }
 `
