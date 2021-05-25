@@ -3,11 +3,14 @@
 * Front End added
 * You can add and see Products
 
+## Update 5/15/2020
+* Auth system added
+* Search engine added
+
 ## Things TO-DO
 * Can change image,product name and price
 * Add more images for product
 * Product Description
-* Add user and login
 * Money to user,to buy products
 
 ## Technologies
@@ -19,6 +22,7 @@
 * Connect Multiparty
 * Multer
 * React JS
+* Mongo DB
 
 # What you need
 * Install [Mongo DB](http://mongodb.com)
