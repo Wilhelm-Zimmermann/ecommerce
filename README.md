@@ -1,15 +1,16 @@
 # Ecommerce
-## Update 5/15/2020
-* Front End added
-* You can add and see Products
 
 ## Update 6/1/2021
 * Now you can buy products
 * added route '/users/money' which you can add money to your profile
 
-## Update 5/15/2020
+## Update 5/25/2020
 * Auth system added
 * Search engine added
+
+## Update 5/15/2020
+* Front End added
+* You can add and see Products
 
 ## Things TO-DO
 * Can change image,product name and price
