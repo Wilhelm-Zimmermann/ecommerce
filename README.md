@@ -3,6 +3,10 @@
 * Front End added
 * You can add and see Products
 
+## Update 6/1/2021
+* Now you can buy products
+* added route '/users/money' which you can add money to your profile
+
 ## Update 5/15/2020
 * Auth system added
 * Search engine added
@@ -11,7 +15,7 @@
 * Can change image,product name and price
 * Add more images for product
 * Product Description
-* Money to user,to buy products
+* User profile
 
 ## Technologies
 * Node JS
@@ -30,6 +34,8 @@
 
 ## How to start
 * Open The terminal
-1. Go on the backend folder and type  `yarn add`
-2. After finished to install dependencies, type `yarn dev`
-3. If you want to test you need to install,`Insomia` or `Postman`
+  1. Go on the backend folder and type  `yarn add`
+  2. After finished to install dependencies, type `yarn dev`
+* Open another terminal
+  1. Go on the ecommerce folder and type `yarn start`
+  2. After this wait untill the react starts front end, and open your browser on the port `3000`
