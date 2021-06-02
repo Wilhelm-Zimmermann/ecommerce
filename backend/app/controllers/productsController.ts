@@ -9,10 +9,11 @@ interface IProduct{
 
 class ProductController{
     async findAllProducts(req: Request, res: Response){
+        // Get all Products on database
         await db.collection("products").find().toArray((err,result) => {
             if(err) return res.status(500).json({err : "Cannot find any products"})
 	    
-	    // we put the status '200' because in the front end this can get an error	
+	    // we put the status '200' because in the front end this can break out application	
 	    if(result.length === 0) return res.status(200).json({ response : '4' })
             res.status(200).send({
                 response :result
@@ -21,6 +22,7 @@ class ProductController{
     }
 
     async addProduct(req: Request, res: Response){
+        // Adding a new product
         const { name,price }:IProduct = req.body 
         const img = req.file.filename
 
@@ -48,6 +50,8 @@ class ProductController{
     }
 
     async updateProduct(req: Request, res: Response){
+        // Update an existing product
+        // Front end doesnt have this functionality now
         const { name , price } : IProduct = req.body
         const { id } = req.params
 
@@ -79,6 +83,7 @@ class ProductController{
     }
 
     async getOneProduct(req: Request, res: Response){
+        // Get an especified product based on id
         const { id } = req.params
 
         db.collection('products').findOne({
@@ -91,8 +96,11 @@ class ProductController{
     }
     
     async searchProduct(req: Request, res: Response){
+        // Search product based on name
         const product_name = req.params.name        
 
+        // We will use the name field to search
+        // Create a index 'text' to use on name
         db.collection('products').createIndex({ name : 'text'})
         
         db.collection('products').find(

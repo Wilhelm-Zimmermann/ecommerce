@@ -2,9 +2,7 @@ import { Request, Response } from 'express'
 import { db } from '../database/mongo'
 import bcrypt  from 'bcrypt'
 import jsonwebtoken from 'jsonwebtoken'
-
-
-
+import { ObjectID } from 'mongodb'
 import secret from  '../../secret/hash.json'
 
 interface IUser{
@@ -14,14 +12,17 @@ interface IUser{
 }
 
 class UserController{
+    // Creating a new user
     async createUser(req:Request, res:Response){
         const { username, email, password }: IUser = req.body
         const hash = await bcrypt.hash(password,10)
 
+        // Searcing if has an equal username
         const hasUser = await db.collection("users").findOne({
             username : username
         })
         
+        // Searching if has an equal email
         const hasEmail = await db.collection("users").findOne({
             email : email
         })
@@ -37,7 +38,8 @@ class UserController{
         await db.collection("users").insertOne({
             username,
             email,
-            password : hash 
+            password : hash,
+            money : 0
         },(err,result) => {
             if(err) return res.status(500).json({ err : "Error on insert user" })
 
@@ -49,12 +51,14 @@ class UserController{
         })
     }
 
+    // Login system
     async login(req:Request, res:Response){
         const { email, password } : IUser = req.body
         const user = await db.collection("users").findOne({
             email
         })
 
+        // Searching if email exists
         if(!user){
             return res.status(400).json({ err : "There is a problem with login" })
         }
@@ -68,7 +72,6 @@ class UserController{
 
                 const token = jsonwebtoken.sign({
                     user_id : user._id,
-                    username : user.username
                 },
                     secret.secret,
                 {
@@ -80,6 +83,19 @@ class UserController{
                 })
             })
         })
+    }
+
+    async addMoney(req:Request, res:Response){
+        // Adding money to user profile
+        const { money } = req.body
+        const token = req.headers.authorization.split(' ')[1]
+        const decode = await jsonwebtoken.verify(token,secret.secret)
+        const user_id = decode['user_id']
+
+        await db.collection('users').updateOne(
+            { _id : new ObjectID(user_id)},
+            {$set:{money : Number(money)}}
+        )
     }
 }
 

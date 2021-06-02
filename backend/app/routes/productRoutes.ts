@@ -38,7 +38,6 @@ const productController = new ProductController()
 
 // Get all products
 productRoutes.get('/products',productController.findAllProducts)
-
 // Insert a product
 productRoutes.post('/products',
     upload.single("img_product"),

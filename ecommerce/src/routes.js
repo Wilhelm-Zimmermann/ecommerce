@@ -9,6 +9,7 @@ import MainPage from "./pages/MainPage";
 import ProductDetail from "./pages/ProductDetail";
 import AddProducts from "./pages/AddProducts";
 import SearchProduct from "./pages/SearchProduct";
+import Money from "./pages/Money";
 
 const PrivateRoute = ({ component : Component,...rest}) => {
     return(
@@ -34,6 +35,8 @@ const Routes = () => {
                 <Route path='/product/:id' render={props => <ProductDetail {...props}/>}/>
                 <Route path='/products/:name/name' render={props => <SearchProduct {...props}/>}/>
                 <PrivateRoute path='/new_product' component={AddProducts} />
+                <PrivateRoute path='/users/money' component={Money} />
+                {/* <PrivateRoute path='/users/money'/> */}
             </Switch>
         </BrowserRouter>
     )

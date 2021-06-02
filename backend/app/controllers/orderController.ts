@@ -14,7 +14,8 @@ class OrderController{
     }
 
     async newOrder(req: Request, res: Response){
-        const { product_id } = req.body
+        const { product_id } = req.params
+        const { quantityValue } = req.body
 
         const token = req.headers.authorization.split(' ')[1]
         const decode = await jsonwebtoken.verify(token,secret.secret)
@@ -23,13 +24,17 @@ class OrderController{
             _id : new ObjectID(product_id),
         })
 
+        const totalPrice = Number(quantityValue) * Number(product.price)
+
         await db.collection("orders").insertOne({
             product,
-            user:decode
+            quantityValue,
+            totalPrice,
+            user_id : decode['user_id'],
         },(err,result) => {
             if(err) return res.status(500).json({ err : "Cannot make a new order"})
 
-            res.status(201).json({ msg : "Ok"})
+            res.status(201).json({ id : result.insertedId })
         })
     }
 

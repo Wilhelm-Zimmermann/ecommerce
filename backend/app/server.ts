@@ -7,10 +7,13 @@ const app = express()
 
 const http = createServer(app)
 
-app.use(cors())
+app.use(cors({
+    credentials:true,
+    origin: ['http://localhost:3000']
+  }))
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
-// A rota uploads fica reponsavel pelos uploads das imagens
+// The route uploads has access to image
 app.use("/uploads",express.static("uploads"))
 
 export { http,app }
