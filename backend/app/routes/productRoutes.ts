@@ -37,7 +37,7 @@ const productRoutes = Router()
 const productController = new ProductController() 
 
 // Get all products
-productRoutes.get('/products',productController.findAllProducts)
+productRoutes.get('/products',auth.public,productController.findAllProducts)
 // Insert a product
 productRoutes.post('/products',
     upload.single("img_product"),
@@ -47,7 +47,7 @@ productRoutes.post('/products',
 
 // Get one product
 
-productRoutes.get('/products/:id',productController.getOneProduct)
+productRoutes.get('/products/:id',auth.public,productController.getOneProduct)
 
 // Delete product based on id
 productRoutes.delete('/products/:id/delete',auth.private,productController.deleteProduct)
@@ -56,6 +56,6 @@ productRoutes.delete('/products/:id/delete',auth.private,productController.delet
 productRoutes.put('/products/:id/update',auth.private,productController.updateProduct)
 
 // Search engine
-productRoutes.get('/products/:name/name',productController.searchProduct)
+productRoutes.get('/products/:name/name',auth.public,productController.searchProduct)
 
 export { productRoutes }

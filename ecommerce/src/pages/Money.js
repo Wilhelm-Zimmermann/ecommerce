@@ -9,6 +9,7 @@ const Money = () => {
     const addMoney = () => {
         // Updating the user money
         api.put('/user/money',money)
+        window.location.href = '/'
     }
     return(
         <MoneyContainer>

@@ -49,8 +49,7 @@ const AddProducts = () => {
             <input type='text' className='w50' name='name' onChange={e => setProductInfo({...productInfo,name : e.target.value})} placeholder='Name'/>
             <input type='number' className='w50' name='price' onChange={e => setProductInfo({...productInfo,price : e.target.value})} placeholder='Price'/>
             <label for='img'>
-                <FontAwesomeIcon icon={faFileImage} size='2x'/>
-                Choose a file
+                <p>+</p>
                 <input type='file' id='img' onChange={e => setProductInfo({...productInfo,image : e.target.files[0]})} name='file'/>
             </label>
             {/* <textarea onChange={e => setProductInfo({...productInfo,description: e.target.value})}></textarea> */}

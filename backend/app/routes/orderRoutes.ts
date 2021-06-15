@@ -7,7 +7,7 @@ const auth = new Auth()
 
 const orderController = new OrderController()
 
-orderRoutes.get('/order',orderController.getAllOrders)
+orderRoutes.get('/order',auth.public,orderController.getAllOrders)
 
 orderRoutes.post('/order/:product_id',auth.private,orderController.newOrder)
 

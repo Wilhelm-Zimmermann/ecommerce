@@ -10,6 +10,9 @@ export const Head = styled.div`
     @media screen and (max-width:608px){
         flex-direction:column;
     }
+    #user_icon{
+        cursor:pointer;
+    }
 `
 
 export const Search = styled.div`

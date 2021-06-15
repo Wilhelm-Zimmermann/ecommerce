@@ -20,15 +20,27 @@ export const Form = styled.form`
     label[for=img]{
         text-align:center;
         cursor:pointer;
-        width:16%;
-        height:30px;
-        &:hover {
-            transition:400ms;
-            transform:rotate(360deg);
+        border:1px dotted #ccc;
+        width:100%;
+        margin-top:10px;
+        height:300px;
+        &:hover p{
+            animation:load 1s infinite linear;
+        }
+        p{
+            display:inline-block;
+            font-weight:lighter;
+            font-size:100px;
+            line-height:300px;
         }
     }
+    @keyframes load{
+        0% { transform: rotate(0deg) }
+        100% { transform : rotate(360deg) }
+    }
     input{
-        width:40%;
+        width:49%;
+        margin: 0 0.5%;
         height:30px;
         border:1px solid #bbb;
         padding-left:10px;

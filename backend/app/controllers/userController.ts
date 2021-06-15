@@ -4,7 +4,7 @@ import bcrypt  from 'bcrypt'
 import jsonwebtoken from 'jsonwebtoken'
 import { ObjectID } from 'mongodb'
 import secret from  '../../secret/hash.json'
-
+ 
 interface IUser{
     username : string
     email : string
@@ -39,7 +39,8 @@ class UserController{
             username,
             email,
             password : hash,
-            money : 0
+            money : 0,
+            profilePhoto : '',
         },(err,result) => {
             if(err) return res.status(500).json({ err : "Error on insert user" })
 
@@ -75,7 +76,7 @@ class UserController{
                 },
                     secret.secret,
                 {
-                    expiresIn : '1d'
+                    expiresIn : '2d'
                 })
                 return res.status(200).json({
                     token: token,
@@ -96,6 +97,20 @@ class UserController{
             { _id : new ObjectID(user_id)},
             {$set:{money : Number(money)}}
         )
+    }
+
+    async getProfile(req:Request, res:Response){
+        const token = req.headers.authorization.split(' ')[1]
+        const decode = jsonwebtoken.verify(token,secret.secret)
+        const user_id = decode['user_id']
+
+        await db.collection('users').findOne({
+            _id : new ObjectID(user_id)
+        },(err,result) => {
+            if(err) return res.status(500).json({ error : 'Cannot get User profile'})
+
+            return res.status(200).json(result)
+        })
     }
 }
 
