@@ -1,5 +1,8 @@
 # Ecommerce
 
+## Update 6/15/2021
+* Added user profile
+
 ## Update 6/1/2021
 * Now you can buy products
 * added route '/users/money' which you can add money to your profile
@@ -16,7 +19,7 @@
 * Can change image,product name and price
 * Add more images for product
 * Product Description
-* User profile
+* User can update his profile
 
 ## Technologies
 * Node JS
