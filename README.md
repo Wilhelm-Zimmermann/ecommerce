@@ -38,8 +38,8 @@
 
 ## How to start
 * Open The terminal
-  1. Go on the backend folder and type  `yarn add`
+  1. Go on the backend folder and type  `yarn add package.json`
   2. After finished to install dependencies, type `yarn dev`
 * Open another terminal
   1. Go on the ecommerce folder and type `yarn start`
-  2. After this wait untill the react starts front end, and open your browser on the port `3000`
+  2. After this wait until the react starts front end, and open your browser on the port `3000`
