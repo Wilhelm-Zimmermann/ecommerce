@@ -6,7 +6,7 @@
   "author": "Wilhelm",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev ./app/app.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules ./app/app.ts"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

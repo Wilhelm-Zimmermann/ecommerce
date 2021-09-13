@@ -1,7 +1,7 @@
 import { Router } from 'express'
 const orderRoutes = Router()
 import { OrderController } from '../controllers/orderController'
-import {Auth} from '../../middleware/auth'
+import {Auth} from '../middleware/auth'
 
 const auth = new Auth()
 

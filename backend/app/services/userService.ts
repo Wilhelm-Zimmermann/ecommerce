@@ -78,10 +78,7 @@ class UserService {
 
     }
 
-    async getProfile(token:string) {
-
-        const decode = verify(token, secret.secret)
-        const user_id = decode["sub"]
+    async getProfile(user_id:string) {
 
         const user = await db.collection('users').findOne({
             _id: new ObjectID(user_id)
@@ -94,9 +91,7 @@ class UserService {
         return user;
     }
 
-    async addMoney(money:number, token:string){
-        const decode = await verify(token,secret.secret)
-        const user_id = decode['sub']
+    async addMoney(money:number,user_id:string){
 
         await db.collection('users').updateOne(
             { _id : new ObjectID(user_id)},

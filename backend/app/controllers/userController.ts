@@ -34,9 +34,9 @@ class UserController{
 
     async addMoney(req:Request, res:Response):Promise<Response>{
         const {money} = req.body
-        const token = req.headers.authorization.split(' ')[1]
+        const { user_id } = req
         try{
-            await userService.addMoney(money,token)
+            await userService.addMoney(money,user_id)
             return res.status(200).json({msg: "Money added to your profile"})
         }catch(err){
             return res.status(400).json({ err : err.message})
@@ -44,9 +44,9 @@ class UserController{
     }
 
     async getProfile(req:Request, res:Response):Promise<Response>{
-        const token = req.headers.authorization.split(' ')[1]
+        const { user_id } = req
         try{
-            const user = await userService.getProfile(token)
+            const user = await userService.getProfile(user_id)
             return res.status(200).json(user)
         }catch(err){
             return res.status(400).json({ err : err.message})

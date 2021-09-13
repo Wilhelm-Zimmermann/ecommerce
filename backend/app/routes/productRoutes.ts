@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import multer from 'multer'
 import { ProductController } from '../controllers/productsController'
-import {Auth} from '../../middleware/auth'
+import {Auth} from '../middleware/auth'
 
 const auth = new Auth()
 
