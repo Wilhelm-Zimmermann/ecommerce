@@ -38,7 +38,7 @@
 
 ## How to start
 * Open The terminal
-  1. Go on the backend folder and type  `yarn add package.json`
+  1. Go on the backend folder and type  `yarn`
   2. After finished to install dependencies, type `yarn dev`
 * Open another terminal
   1. Go on the ecommerce folder and type `yarn start`
